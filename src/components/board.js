@@ -34,7 +34,6 @@ export default class Board extends Component{
             height: this.props.size,
         }
 
-
         this.state = {
             board,
             version: 0
@@ -137,9 +136,9 @@ export default class Board extends Component{
                 let alive = board[row][col];
                 let neighbors = this.getNeighbours(row, col);
                 let aliveNeighbors =  neighbors.filter(c=> board[c.row][c.col]);
-                board[row][col] = this.check2Neighbours(alive, aliveNeighbors) &
-                    this.check3Neighbours(alive, aliveNeighbors) &
-                    this.checkMorethan3Neighbours(alive, aliveNeighbors) |
+                board[row][col] = this.check2Neighbours(alive, aliveNeighbors) &&
+                    this.check3Neighbours(alive, aliveNeighbors) &&
+                    this.checkMorethan3Neighbours(alive, aliveNeighbors) ||
                     this.deadCellLives(alive, aliveNeighbors);
             }
         }
