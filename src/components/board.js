@@ -1,10 +1,5 @@
 import {Component} from "react"
 
-// const elementStyle = {
-//     width: "20px",
-//     height: "20px"
-// }
-
 const aliveStyle = {
     backgroundColor: "black"
 }
