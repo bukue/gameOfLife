@@ -1,17 +1,15 @@
 import {Component} from "react"
 
-const elementStyle = {
-    width: "20px",
-    height: "20px"
-}
+// const elementStyle = {
+//     width: "20px",
+//     height: "20px"
+// }
 
 const aliveStyle = {
-    ...elementStyle,
     backgroundColor: "black"
 }
 
 const deadStyle = {
-    ...elementStyle,
     backgroundColor: "white"
 }
 
@@ -34,6 +32,11 @@ export default class Board extends Component{
             }
 
             board[x] = elements;
+        }
+
+        this.elementStyle = {
+            width: this.props.size,
+            height: this.props.size,
         }
 
 
@@ -170,7 +173,12 @@ export default class Board extends Component{
                 <div style={rowStyle} key={`row-${indexRow}`}>
                     {
                         row.map((element, indexElement) =>{
-                            return <div style={ element ? deadStyle : aliveStyle} key={`element-${indexRow}-${indexElement}`} />
+                            return (
+                                <div 
+                                    style={{...this.elementStyle, ...(element ? deadStyle : aliveStyle)}} 
+                                    key={`element-${indexRow}-${indexElement}`} 
+                                />
+                            );
                         })
                     }
                 </div>
